@@ -3,7 +3,7 @@ VERSION?=$(shell grep 'VERSION' pkg/version/version.go | awk '{ print $$4 }' | t
 LT_VERSION?=$(shell grep 'VERSION' cmd/loadtester/main.go | awk '{ print $$4 }' | tr -d '"' | head -n1)
 
 build:
-	CGO_ENABLED=0 go build -a -o ./bin/flagger ./cmd/flagger
+	CGO_ENABLED=1 go build -a -o ./bin/flagger ./cmd/flagger
 
 fmt:
 	go mod tidy
