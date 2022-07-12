@@ -1,4 +1,4 @@
-FROM golang:1.17-alpine as builder
+FROM golang:1.17.10-alpine as builder
 
 ARG TARGETPLATFORM
 ARG REVISON
@@ -17,7 +17,7 @@ COPY cmd/ cmd/
 COPY pkg/ pkg/
 
 # build
-RUN CGO_ENABLED=0 go build \
+RUN CGO_ENABLED=1 go build \
     -ldflags "-s -w -X github.com/fluxcd/flagger/pkg/version.REVISION=${REVISON}" \
     -a -o flagger ./cmd/flagger
 
